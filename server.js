@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 // http://localhost:5000/api/.. 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 6543;
 
 app.use(bodyParser.json()); // Para analizar datos JSON 
 app.use(bodyParser.urlencoded({ extended: true }));
