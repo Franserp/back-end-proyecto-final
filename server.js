@@ -22,7 +22,7 @@ app.use(cors({
     credentials: true, // Permitir cookies
 }));
 
-sequelize.sync({ force: false }) // force: false evita sobrescribir datos existentes
+sequelize.sync({ force: true }) // force: false evita sobrescribir datos existentes
         .then(() => console.log('Base de datos conectada y sincronizada'))
         .catch(err => console.error('Error al conectar la base de datos:', err));
 
