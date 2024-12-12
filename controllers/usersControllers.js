@@ -1,5 +1,5 @@
 const { User } = require('../models/users');// Asegúrate de que la ruta al modelo es correcta
-const bcrypt = require('bcrypt'); // Para encriptar contraseñas 
+const bcrypt = require('bcryptjs'); // Para encriptar contraseñas 
 const jwt = require('jsonwebtoken'); // Para generar tokens
 const sendEmail = require('../emailServices/emailServices');
 
