@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
     origin: 'http://localhost:5173', // Cambia esto por la URL de tu frontend en producción.
     credentials: true, // Permitir cookies
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 sequelize.sync({ force: true }) // force: false evita sobrescribir datos existentes

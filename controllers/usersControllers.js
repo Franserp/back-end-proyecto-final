@@ -85,7 +85,7 @@ const loginUser = async (req, res) => {
             httpOnly: true, // Aumenta la seguridad contra XSS
             secure: process.env.NODE_ENV === 'production', // Solo en HTTPS en producción
             maxAge: 24 * 60 * 60 * 1000, // 1 día
-            sameSite: 'strict', // Previene CSRF
+            sameSite: 'none', // Previene CSRF
         });
         return res.status(200).json({
             message: 'Inicio de sesión exitoso.',
