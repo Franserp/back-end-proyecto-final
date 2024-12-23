@@ -7,7 +7,14 @@ const createMessage = async (req, res) => {
         const { channel_id, content } = req.body;
         const user_id = req.user.id;
         const username = await User.findByPk(user_id);
-        const newMessage = await Message.create({ channel_id, user_id, content, username });
+        const newMessage = await Message.create(
+            {
+                channel_id,
+                user_id,
+                content,
+                username : username.username.toString()
+            }
+        );
         res.status(201).json(newMessage);
     } catch (error) {
         res.status(500).json({ error: error.message });
