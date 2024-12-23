@@ -5,7 +5,8 @@ const createMessage = async (req, res) => {
     try {
         const { channel_id, content } = req.body;
         const user_id = req.user.id;
-        const newMessage = await Message.create({ channel_id, user_id, content });
+        const username = req.user.username;
+        const newMessage = await Message.create({ channel_id, user_id, content, username });
         res.status(201).json(newMessage);
     } catch (error) {
         res.status(500).json({ error: error.message });

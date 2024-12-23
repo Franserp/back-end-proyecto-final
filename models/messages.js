@@ -20,6 +20,10 @@ const Message = sequelize.define('Message', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    username: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
