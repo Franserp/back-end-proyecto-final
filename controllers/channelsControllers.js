@@ -1,19 +1,19 @@
 const Channel = require('../models/channels');
 const Workspace = require('../models/workspaces');
 
-// Crear un nuevo canal
+
 const createChannel = async (req, res) => {
     try {
         const { workspace_id, name } = req.body;
 
-        // Verificar si el workspace existe
+       
         const workspace = await Workspace.findByPk(workspace_id);
         if (!workspace) {
             return res.status(404).json({ error: 'Workspace no encontrado' });
         }
         console.log(req.body);
 
-        // Crear el canal
+      
         const channel = await Channel.create({ workspace_id, name });
         res.status(201).json(channel);
     } catch (error) {
@@ -21,7 +21,7 @@ const createChannel = async (req, res) => {
     }
 };
 
-// Obtener todos los canales
+
 const getAllChannels = async (req, res) => {
     try {
         const channels = await Channel.findAll({ include: Workspace });
@@ -31,7 +31,7 @@ const getAllChannels = async (req, res) => {
     }
 };
 
-// Obtener un canal por ID
+
 const getChannelById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -47,12 +47,12 @@ const getChannelById = async (req, res) => {
     }
 };
 
-// Obtener canales por workspace_id
+
 const getChannelsByWorkspace = async (req, res) => {
     try {
         const { workspace_id } = req.params;
 
-        // Buscar los canales que coincidan con el workspace_id
+       
         const channels = await Channel.findAll({ where: { workspace_id } });
 
         if (channels.length === 0) {
@@ -66,7 +66,7 @@ const getChannelsByWorkspace = async (req, res) => {
 };
 
 
-// Actualizar un canal
+
 const updateChannel = async (req, res) => {
     try {
         const { id } = req.params;
@@ -84,7 +84,7 @@ const updateChannel = async (req, res) => {
     }
 };
 
-// Eliminar un canal
+
 const deleteChannel = async (req, res) => {
     try {
         const { id } = req.params;

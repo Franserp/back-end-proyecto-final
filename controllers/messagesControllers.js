@@ -1,7 +1,7 @@
 const Message = require('../models/messages');
 const { User } = require('../models/users');
 
-// Crear un mensaje
+
 const createMessage = async (req, res) => {
     try {
         const { channel_id, content } = req.body;
@@ -21,7 +21,7 @@ const createMessage = async (req, res) => {
     }
 };
 
-// Obtener todos los mensajes
+
 const getMessages = async (req, res) => {
     try {
         const messages = await Message.findAll();
@@ -31,7 +31,7 @@ const getMessages = async (req, res) => {
     }
 };
 
-// Obtener mensajes por ID de canal
+
 const getMessagesByChannel = async (req, res) => {
     try {
         const { channel_id } = req.params;
@@ -42,7 +42,7 @@ const getMessagesByChannel = async (req, res) => {
     }
 };
 
-// Eliminar un mensaje
+
 const deleteMessage = async (req, res) => {
     try {
         const { id } = req.params;

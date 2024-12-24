@@ -1,41 +1,40 @@
 const express = require('express');
-const sequelize = require('./db.js'); // Importa el archivo db.js
+const sequelize = require('./db.js');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const userRoutes = require('./routes/usersRoutes.js');  // Importamos las rutas de usuario
+const userRoutes = require('./routes/usersRoutes.js'); 
 const workspaceRoutes = require('./routes/workspacesRoutes.js'); 
 const channelRoutes = require('./routes/channelsRoutes.js');
 const messagesRoutes = require('./routes/messagesRoutes.js');
 const defineAssociations = require('./models/associations');
 const bodyParser = require('body-parser');
 
-// http://localhost:5000/api/.. 
 
 const app = express();
 const PORT = process.env.PORT || 6543;
 
 
 app.use(cors({
-    origin: ['http://localhost:5173', "https://utn-proyecto-final-front-end-production.up.railway.app" ], // Cambia esto por la URL de tu frontend en producción.
-    credentials: true, // Permitir cookies
+    origin: ['http://localhost:5173', "https://utn-proyecto-final-front-end-production.up.railway.app" ], 
+    credentials: true, 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-app.options('*', cors()); // Maneja todas las solicitudes preflight
-app.use(bodyParser.json()); // Para analizar datos JSON 
+app.options('*', cors()); 
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-sequelize.sync({ force: true }) // force: false evita sobrescribir datos existentes
+sequelize.sync({ force: true }) 
         .then(() => console.log('Base de datos conectada y sincronizada'))
         .catch(err => console.error('Error al conectar la base de datos:', err));
 
-// Middleware
+
 app.use(express.json());
 app.use(cookieParser());
 
 
-// Probar conexión a la base de datos
+
 (async () => {
     try {
         await sequelize.authenticate();
@@ -47,7 +46,7 @@ app.use(cookieParser());
 defineAssociations();
 
 
-app.use('/api', userRoutes);  // Rutas para usuarios estarán bajo /api/users
+app.use('/api', userRoutes);  
 app.use('/api', workspaceRoutes);
 app.use('/api', channelRoutes);
 app.use('/api', messagesRoutes);
@@ -60,12 +59,12 @@ app.get('/', (req, res) => {
 
 
 
-// Iniciar servidor
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-;  // Asegúrate de importar correctamente tu archivo de configuración
+; 
 
 sequelize.authenticate()
     .then(() => console.log('Conexión a la base de datos establecida correctamente'))

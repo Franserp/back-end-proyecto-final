@@ -1,6 +1,6 @@
 const Workspace = require('../models/workspaces');
 
-// Crear un nuevo workspace
+
 const createWorkspace = async (req, res) => {
     try {
         const { name } = req.body;
@@ -11,7 +11,7 @@ const createWorkspace = async (req, res) => {
     }
 };
 
-// Obtener todos los workspaces
+
 const getAllWorkspaces = async (req, res) => {
     try {
         const workspaces = await Workspace.findAll();
@@ -21,7 +21,6 @@ const getAllWorkspaces = async (req, res) => {
     }
 };
 
-// Obtener un workspace por ID
 const getWorkspaceById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -35,7 +34,7 @@ const getWorkspaceById = async (req, res) => {
     }
 };
 
-// Actualizar un workspace
+
 const updateWorkspace = async (req, res) => {
     try {
         const { id } = req.params;
@@ -53,7 +52,6 @@ const updateWorkspace = async (req, res) => {
     }
 };
 
-// Eliminar un workspace
 const deleteWorkspace = async (req, res) => {
     try {
         const { id } = req.params;

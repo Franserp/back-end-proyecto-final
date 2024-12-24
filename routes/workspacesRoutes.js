@@ -11,7 +11,7 @@ const {
 
 router.use(authenticateToken);
 
-// Definir las rutas
+
 router.post('/workspaces', createWorkspace);
 router.get('/workspaces', getAllWorkspaces);
 router.get('/workspaces/:id', getWorkspaceById);
