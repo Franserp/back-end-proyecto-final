@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 6543;
 app.use(bodyParser.json()); // Para analizar datos JSON 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['http://localhost:5173',"https://utn-proyecto-final-front-rh0nprzhi-francisco-contreras-projects.vercel.app/"], // Cambia esto por la URL de tu frontend en producción.
+    origin: ['http://localhost:5173',"https://utn-proyecto-final-front-rh0nprzhi-francisco-contreras-projects.vercel.app", "https://utn-proyecto-final-front-end.vercel.app/"], // Cambia esto por la URL de tu frontend en producción.
     credentials: true, // Permitir cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -43,6 +43,8 @@ app.use(cookieParser());
     }
 })();
 defineAssociations();
+app.options('*', cors()); // Maneja todas las solicitudes preflight
+
 app.use('/api', userRoutes);  // Rutas para usuarios estarán bajo /api/users
 app.use('/api', workspaceRoutes);
 app.use('/api', channelRoutes);
