@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 6543;
 app.use(cors({
     origin: ['http://localhost:5173',"https://utn-proyecto-final-front-rh0nprzhi-francisco-contreras-projects.vercel.app", "https://utn-proyecto-final-front-end.vercel.app/", ], // Cambia esto por la URL de tu frontend en producción.
     credentials: true, // Permitir cookies
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.options('*', cors()); // Maneja todas las solicitudes preflight
